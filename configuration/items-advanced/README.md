@@ -1,11 +1,13 @@
 ---
-description: All the subtleties of item creation
+description: All properties for custom items
 cover: >-
   https://cdn.discordapp.com/attachments/896841738621177896/966824770651967498/unknown.png
 coverY: 0
 ---
 
 # Items (advanced)
+
+This page describe all possible additional properties that you may use for your custom items.
 
 ## Vanilla options
 
@@ -18,24 +20,21 @@ This allows you to change the name displayed on the top of an item.
 ```
 
 ### material
-
-This allows you to change the item type
+This allows you to change the base material for your item (the base material will decide the base functionalities for your item), represented as Bukkit Material.
 
 ```yaml
   material: WOODEN_SWORD
 ```
 
 ### color
-
-This allows you to change the color of an item made of a supported material (e.g. leather armor).
+This allow you to change the color if the base material is a dyeable item (Leather Horse Armor) or a item that can have color (such as Potion). The format is RGB.
 
 ```yaml
-  color: 3, 252, 136 #rgb
+  color: 3, 252, 136
 ```
 
 ### lore
-
-This allows you to add lines of text under the item name.
+This allow you to add lore to your item (basically a set of text in your item's tooltip). Multiple lore can be added.
 
 ```yaml
 lore:
@@ -44,7 +43,6 @@ lore:
 ```
 
 ### injectID
-
 This allows Oraxen to know recognise the item, it is by default set to true and you should not have to change it. If you do it anyway, the mechanics of the items will no longer work.
 
 ```yaml
@@ -52,7 +50,6 @@ This allows Oraxen to know recognise the item, it is by default set to true and 
 ```
 
 ### excludeFromInventory
-
 This option allows you to exclude an item from the oraxen inventory. It will no longer be displayed but you can still get it using [oraxen give command](../../usage/commands.md#get-the-items). It is useful for items used in  other plugins like inventory icons.
 
 ```yaml
@@ -60,24 +57,21 @@ This option allows you to exclude an item from the oraxen inventory. It will no 
 ```
 
 ### durability
-
-This allows you to change the number of damage of a item (not very useful)
+Allow you to change the damage of an item (?) Not very useful
 
 ```yaml
   durability: 10
 ```
 
 ### unbreakable
-
-This will make your item unbreakable (for real, using minecraft dedicated property).
+The name say it all, make your item unbreakable (for real by using Minecraft's dedicated property)
 
 ```yaml
 unbreakable: true
 ```
 
 ### ItemFlags
-
-This allows you to set ItemFlags to an item, get the list of available flags [here](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/inventory/ItemFlag.html).
+Allow you to set some Flags property, see all possible flags [here](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/inventory/ItemFlag.html)
 
 ```yaml
   ItemFlags:
