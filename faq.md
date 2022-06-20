@@ -7,75 +7,43 @@ coverY: 0
 
 # Frequently Asked Questions
 
-## Is Oraxen a mod?
+## Is Oraxen a Minecraft Mod?
+No. Oraxen is not a Minecraft Mod made for a Modloader (such as Forge/Fabric) or a Minecraft Mod that modify your Minecraft client. It's a plugin for Bukkit-based server software (Spigot/Paper) that allow you to add new items, blocks and these kind of custom stuff that you usually see from a mod to the vanilla game (yes, vanilla client without installing anything!) using a host of different techniques and a automatically generated server resource pack.
 
-No Oraxen is not a mod in the usual sense of the word. It's a minecraft plugin that allows you to add items, blocks and that kind of cool stuff to the game with an automatically installed texture pack.
+## Oraxen automatically generates and use its own resource pack, can I still use mine?
+**TL;DR: yes.**
 
-## Oraxen is using its own texture pack, can I still use mine?
+You can use your own resource pack if you are a player (just apply it like normal and call it a day) since Oraxen doesn't replace anything.
 
-If you are a player: yes Oraxen is using a server resource pack which does not replace anything: you can still use your own. If you are a server owner who is already using a resourcepack: yes but you'll need to integrate your pack in Oraxen (just drag and drop your files in the /pack folder of Oraxen) ...or integrate the oraxen pack with yours (but then you'ld have to do it everytime and that's a little stupid).
+If you are a server owner, you will need to merge your pack with Oraxen's one (just drag/n/drop your assets folder to the pack folder of Oraxen) or... you can merge the Oraxen's generated resource pack with yours but you will need to do that everytime you add new stuff and that is a little stupid isn't it ¯\_(ツ)_/¯
 
-## Does Oraxen replace items?
+## Does Oraxen replace currently existing items?
+**TL;DR: no but...**
 
-The goal of Oraxen is to add things to the game without losing features, so the short answer is no, however minecraft has some limitations (you can't really add blocks or armors for example), so we had to make a choice (a choice that can be undone by disabling the related mechanics):\
-\- by default leather amors will look a little different on body (they will keep the same texture inside inventory though)\
-\- new blocks will use vanilla unused mushroom stem block variations: this can create issues in constructions made using those unusual variations and look buggy if you place two mushroom stem blocks side-by-side (this is just a display bug and that would be fixed by right clicking or disconnecting).
+The goal of Oraxen is to add cool stuff to the game without losing existing features (or at least, useful and common ones...), however Minecraft has some (or a lot) of limitations... The most noticeably is that you can not really add new custom blocks (with custom textures) or custom armors (again, with custom textures) for example. Because of these limitations, we had no choices but to sacrifices (which can be undone by disabling the related mechanics :/). But don't worry, none of these will affect your survival experience at all (isn't it?).
 
-## When I add an item, it breaks the textures of others already created
-
-By default oraxen automatically set a custom model data to your items and generate it in the most optimized way.  Every item need to have a different model data, so when you add another item, it might break the others. In order to avoid this "issue" (which is not really an issue for test servers, but might be problematic for a production servers), enable the option `automatically_set_model_data` in **settings.yml**.
+## When I add a new item, the texture of other one breaks
+For custom items to have custom texture, Oraxen use a NBT tag called Custom Model Data. Every item need to have a different Custom Model Data, and Oraxen attempt to set a Custom Model Data for your custom item and generate it in the most optimized way, this might break other custom items's texture. This is not really an issue for test server (since although the texture is broken, the behavior should always works™) but may be problematic for production servers, so to prevent this, enable the option `automatically_set_model_data` in **settings.yml** file. The same can also be done for Glyphs, which can be also addressed by enable the option "automatically_set_glyph_code".
 
 {% hint style="info" %}
-Don't forget to reload the plugin with `/o reload` **AND** your resource pack using `/o pack getpack`(you can also disconnect and reconnect to the server)
+If you done the above while the server is running, either restart your server (recommended) or run /oraxen reload all (alias can also be used) and wait for your client to reload the resource pack.
 {% endhint %}
 
-## My textures work when I use optifine but not in vanilla
+## My textures works in Optifine but not Vanilla
+It's no longer possible to use upper case characters in texture/model name with Vanilla since Minecraft 1.11, however Optifine still support that. Please avoid use upper case for the widest compatibility and avoid annoyning problems.
 
-It is no longer possible to use upper case in textures or model names with vanilla since minecraft 1.11, however optifine still supports it. Please never use upper case to avoid problems.
-
-## I'm using bungeecord and my players redownload the pack every time they switch to another server
-
-Just install [Bungee Pack Layer](https://www.spigotmc.org/resources/%E2%9C%82%EF%B8%8F-bungee-pack-layer-optimize-resource-pack-sending.94978/) on your bungee server/
+## I'm using Bungeecord and everytime my player switch server Oraxen reload their resource pack again
+Install [Bungee Pack Layer](https://www.spigotmc.org/resources/%E2%9C%82%EF%B8%8F-bungee-pack-layer-optimize-resource-pack-sending.94978/) on your Bungee server.
 
 ## How to update Oraxen?
-
-Here is a great video that can help you: [https://youtu.be/LkansZwVaPY](https://youtu.be/LkansZwVaPY)
+Get new version's JAR, replace your current Oraxen JAR with the newer one, restart your server, done. However please read the update changelog carefully to see if there is any configuration breaking changes.
+Or if you want a video tutorial instead, [here](https://youtu.be/LkansZwVaPY).
 
 ## How to hide item tooltips?
 
-[https://github.com/lolgeny/item-tooltip-remover](https://github.com/lolgeny/item-tooltip-remover)
+Use this [Core Shader](https://github.com/lolgeny/item-tooltip-remover) by downloading it, copying all files from assets/minecraft/shaders/core to pack/shaders/core in Oraxen and restart your server or run /oraxen reload.
 
-## I would like to suggest a new feature or report an issue
-
-First option: Login to github and submit an issue to the official repo: [git.io/oraxen](https://github.com/Th0rgal/Oraxen)
-
-Second option: Join [the discord](https://discord.gg/4Qk5kBT9UX), get your Oraxen rank and go to the support or requests channel.
-
-
-
-### I just want to use Oraxen's mechanics.
-
-Go to settings.yml and set these options
-
-```yaml
-  upload:
-    enabled: false
-Pack:
-  generation:
-    generate: false
-    compression: BEST_COMPRESSION
-    protection: false
-  dispatch:
-    send_pack: false
-  automatically_set_model_data: true
-  automatically_set_glyph_code: true
-  enable_configs_updater: false
-Misc:
-  reset_recipes: false
-  auto_update_items: false
-```
-
-The configurations do not go in that order, once this is done, delete what is inside the Oraxen/pack, Oraxen/Items/ and Oraxen/glyphs paths.
-
-
-
+## I'd like to suggest new features or reporting bugs
+To do these you have 2 options.
+* 1. Login into your Github account and submit an issue using provided template (Suggestion/Bug) [here](git.io/oraxen).
+* 2. Join the official [Discord](https://discord.gg/4Qk5kBT9UX), get Oraxen rank at #ranks and ask it in #support channel (recommended).
