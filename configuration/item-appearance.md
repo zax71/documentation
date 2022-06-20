@@ -1,21 +1,22 @@
 ---
-description: How to customize your item appearance?
+description: Customize item appearance
 cover: >-
   https://cdn.discordapp.com/attachments/896841738621177896/966824489490976798/unknown.png
 coverY: 0
 ---
 
-# Item Appearance
-
-Unlike most other plugins that allow you to create custom items, oraxen supports the creation of a texture pack: that is, you can define directly in the configuration what you want your items to look like and it will take care of generating the pack. For minecraft, the appearance of each item is managed by a json file called the model. Most of the items have a very simple model that simply displays a two-dimensional texture. To avoid having to write this json file (which is repetitive and boring), you can ask Oraxen to generate it itself.
+# Long story short
+Unlike most other custom items plugins, Oraxen have the ability to automatically generate a fully functional resource pack with all these boring JSON files all setup! You can define how the item look like in the configuration file and Oraxen will take care of the rest, you just need to provide the texture itself. Technical side, the appearance of each item is managed by model, which is a JSON file that define the texture of the item, model of the item and so more. Most of items have a very simple model that display a two-dimensional texture, which if you decide to write all of these JSON yourself it would like a long, tedious and boring task. Instead, ask Oraxen to generate it for you!
 
 ### The pack folder
+Oraxen have a folder called "pack" which contains all of your textures and models required for Oraxen to work. It's structured like a normal Miencraft resource pack but a lot more simpler. You can drag your textures into the textures folder, models into the models folder. You can also create sub folders inside these folders to make all of it cleaner. If you like to work like a normal resource pack with namespace and such, create a folder named "assets" and inside that folder you can create namespaces such as "minecraft" and whatever you like. It will then put all of that into a resource pack file called pack.zip.
 
-This folder (./plugins/Oraxen/pack) contains your pack. It works like a normal minecraft texture pack but simpler. You can drag your textures into the textures folder and your models into your models folder. You can also create sub-folders inside these folders to make it cleaner but it's not necessary. When the plugin generates the resource pack it appears in this folder under the name pack.zip.
+{% hint style='info' %}
+When define the texture in Oraxen configuration, you can not specify textures/models from custom namespaces yet!
+{% endhint %}
 
-### Create a simple 2d item
-
-Put the textures that you need in the textures directory of the pack folder. You can then ask Oraxen to generate the model by superposing the textures :
+### Create simple 2D item
+Put the texture of the item you want to create in the textures directory in the pack folder. Then in the item configuration you can specify the "Pack" section to guide Oraxen generating texture for your item:
 
 ```yaml
   Pack:
@@ -25,15 +26,13 @@ Put the textures that you need in the textures directory of the pack folder. You
       - example_image1.png #png extension is not needed
       - example_image2.png
 ```
+The `parent_model` field is the model type that Minecraft will render (for example. item/handheld for weapon, item/generated for normal items, etc).
 
-The parent\_model field is required by minecraft. In fact this will allow your item to inherit the rendering properties of an item template from minecraft. You can look at the minecraft default models in order to find new ones but I personnaly use item/handheld for weapons like swords and item/generated for simple items or gems like amethysts.
-
-### Use a json model
-
-Creating a json model can be time consuming but it allows you to create really cool things (like 3d items). It is really easy to integrate a json model with Oraxen : put your textures in your textures directory and your model in your models directory (inside Oraxen/pack folder). Then you can ask Oraxen to put this model on one of your items:
+### Use an existing JSON model
+Yeah, modelling is not a easy task and can be very time consuming, but it allow you to create really cool stuff like 3D items. Using it with Oraxen is very easy, same as with 2D texture (assuming you have the JSON). Put the texture where you specify in the JSON model file (you can identify this by opening the JSON file and look for the "texture" and "particle" field. Sometimes it maybe something like "#0" instead so pay attention. You may also need to create new directory too, or just change the texture path, that's way easier :) ), and the actual model JSON file in models directory in the pack folder. Then in the item configuration you can also specify the "Pack" section but with a little change:
 
 {% hint style="danger" %}
-ALWAYS USE LOWER CASE FOR MODEL AND TEXTURE NAMES. Upper case is n longer supported by minecraft vanilla since 1.11 (even though it still works for users using optifine).
+Always use lower case for model and texture name! Upper case character is no longer supported in Vanilla client since Minecraft 1.11 (although it still works for user that have Optifine installed).
 {% endhint %}
 
 ```yaml
@@ -42,26 +41,8 @@ ALWAYS USE LOWER CASE FOR MODEL AND TEXTURE NAMES. Upper case is n longer suppor
     model: example_model.json #json extension is not mandatory
 ```
 
-#### ⚠️ Pro tips when you use a json model!
-
-Usually the templates you get place the textures in a folder, to make sure, open the json file and look at the first few lines, you should find something similar:
-
-```javascript
-{
-	"__comment": "Designed by HighBridRed for Oraxen",
-	"textures": {
-		"particle": "custom/bonesword_palette",
-		"texture": "custom/bonesword_palette",
-		"bonesword_palette": "custom/bonesword_palette"
-	},
-	...
-```
-
-As you can see, the path to the texture is **custom/bonesword\_palette**, that means minecraft will be looking for a texture called **bonesword\_palette.png** in the folder "custom", so you need to create this folder inside "Oraxen/pack/textures". You can also remove "custom/" and keep the texture name only, so you just have to drag and drop it inside the textures folder without creating a subfolder.
-
-### Use a blocking json model (for shield)
-
-If you want to use a custom model for a shield, you need to specific the blocking model which will be used when a user right click using your shield, hopefully this is easy with Oraxen. Here is what it can look like:
+### Use blocking JSON model (i.e. Shield)
+If you want to use a custom JSON model for a custom shield, you need to specify the blocking model which will be shown when the player right click with the shield. This is also easy with Oraxen, here is an example:
 
 ```yaml
   Pack:
@@ -70,9 +51,8 @@ If you want to use a custom model for a shield, you need to specific the blockin
     blocking_model: example_shield_blocking.json #json extension is not mandatory
 ```
 
-### Use a pulling json model (for bows)
-
-If you want to use a custom model for a shield, you need to specific the pulling model which will be used when a user right click using your bow, hopefully this is easy with Oraxen. Here is what it can look like:
+### Use pulling JSON model (i.e. Bow)
+If you want to use a custom JSON model for a custombow, you need to specify the pulling model which will be shown when the player right click holding with the bow. This is also easy with Oraxen, here is an example:
 
 ```yaml
   Pack:
@@ -84,7 +64,7 @@ If you want to use a custom model for a shield, you need to specific the pulling
       - default/combat_bow_pulling_2
 ```
 
-### Use charged\_models json model (for Crossbows)
+### Use changed JSON model (i.e. Crossbow)
 
 ```
   Pack:
