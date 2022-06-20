@@ -86,3 +86,6 @@ To get your textures registered correctly, their name need to contain the string
 
 You can put them in any folder of the pack textures, `~/textures/default/armors` is suggested.
 
+### Customize your armor
+
+Now that you got your armor setup, it's time to give it some properties with attribute modifiers! You can learn more about it [here](../items-advanced/README.md)
