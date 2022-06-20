@@ -46,5 +46,5 @@ Use this [Core Shader](https://github.com/lolgeny/item-tooltip-remover) by downl
 
 ## I'd like to suggest new features or reporting bugs
 To do these you can...
-* Login into your Github account and submit an issue using provided template (Suggestion/Bug) [here](git.io/oraxen).
+* Login into your Github account and submit an issue using provided template (Suggestion/Bug) [here](https://git.io/oraxen).
 * Join the official [Discord](https://discord.gg/4Qk5kBT9UX), get Oraxen rank at #ranks and ask it in #support channel (recommended).
