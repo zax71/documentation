@@ -15,7 +15,7 @@ No. Oraxen is not a Minecraft Mod made for a Modloader (such as Forge/Fabric) or
 
 You can use your own resource pack if you are a player (just apply it like normal and call it a day) since Oraxen doesn't replace anything.
 
-If you are a server owner, you will need to merge your pack with Oraxen's one (just drag/n/drop your assets folder to the pack folder of Oraxen) or... you can merge the Oraxen's generated resource pack with yours but you will need to do that everytime you add new stuff and that is a little stupid isn't it ¯\_(ツ)_/¯
+If you are a server owner, you will need to merge your pack with Oraxen's one (just drag/n/drop your assets folder to the pack folder of Oraxen) or... you can merge the Oraxen's generated resource pack with yours but you will need to do that everytime you add new stuff and that is a little stupid isn't it ¯\\_(ツ)_/¯
 
 ## Does Oraxen replace currently existing items?
 **TL;DR: no but...**
@@ -37,6 +37,7 @@ Install [Bungee Pack Layer](https://www.spigotmc.org/resources/%E2%9C%82%EF%B8%8
 
 ## How to update Oraxen?
 Get new version's JAR, replace your current Oraxen JAR with the newer one, restart your server, done. However please read the update changelog carefully to see if there is any configuration breaking changes.
+
 Or if you want a video tutorial instead, [here](https://youtu.be/LkansZwVaPY).
 
 ## How to hide item tooltips?
@@ -44,6 +45,6 @@ Or if you want a video tutorial instead, [here](https://youtu.be/LkansZwVaPY).
 Use this [Core Shader](https://github.com/lolgeny/item-tooltip-remover) by downloading it, copying all files from assets/minecraft/shaders/core to pack/shaders/core in Oraxen and restart your server or run /oraxen reload.
 
 ## I'd like to suggest new features or reporting bugs
-To do these you have 2 options.
-* 1. Login into your Github account and submit an issue using provided template (Suggestion/Bug) [here](git.io/oraxen).
-* 2. Join the official [Discord](https://discord.gg/4Qk5kBT9UX), get Oraxen rank at #ranks and ask it in #support channel (recommended).
+To do these you can...
+* Login into your Github account and submit an issue using provided template (Suggestion/Bug) [here](git.io/oraxen).
+* Join the official [Discord](https://discord.gg/4Qk5kBT9UX), get Oraxen rank at #ranks and ask it in #support channel (recommended).
